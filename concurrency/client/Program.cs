@@ -58,6 +58,7 @@ class Demo {
     /*
         Demo 1:
         Just connect to the database and then wait
+        dotnet run -c Release 1
     */
     private async Task RunDemo_1(params object[] args) {
         int taskId = (int)args[0];
@@ -74,6 +75,9 @@ class Demo {
         Using default transaction level (read committed)
         Start from rowCount=1000 and then change it to 1000000 
         to exahust the TCP transmission buffer
+
+        dotnet run -c Release 2 1000
+        dotnet run -c Release 2 1000000
     */
     private async Task RunDemo_2(params object[] args) {
         int taskId = (int)args[0];
@@ -89,7 +93,7 @@ class Demo {
 
         var cmd = new SqlCommand($"SELECT * FROM dbo.timesheet_big WHERE id BETWEEN 1 AND {rowCount} ORDER BY id", conn);
 
-        SqlDataReader reader = cmd.ExecuteReader();
+        var reader = cmd.ExecuteReader();
         while (reader.Read())
         {
             Console.WriteLine(String.Format("[{0}]: Id:{1}", taskId, reader[0]));
@@ -102,6 +106,9 @@ class Demo {
         Move to a higher transaction level (repeatable read)
         Start from rowCount=1000 and then change it to 1000000 
         to exahust the TCP transmission buffer
+
+        dotnet run -c Release 3 1000
+        dotnet run -c Release 3 1000000
     */
     private async Task RunDemo_3(params object[] args) {
         int taskId = (int)args[0];
@@ -119,7 +126,7 @@ class Demo {
 
         var cmd = new SqlCommand($"SELECT * FROM dbo.timesheet_big WHERE id BETWEEN 1 AND {rowCount} ORDER BY id", conn, tran);
 
-        SqlDataReader reader = cmd.ExecuteReader();
+        var reader = cmd.ExecuteReader();
         while (reader.Read())
         {
             Console.WriteLine(String.Format("[{0}]: Id:{1}", taskId, reader[0]));
