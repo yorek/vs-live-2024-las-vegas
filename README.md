@@ -14,7 +14,7 @@ About isolation levels and database internals
 
 ### Demos
 
-Available in the `./concurrency` folder.
+Available in the `./demos/concurrency` folder.
 
 ## T13 Schema Management and Evolution to Create Flexible and High-performance Applications
 
