@@ -1,6 +1,6 @@
 # VS Live 2024 Las Vegas Demos
 
-https://vslive.com/events/las-vegas-2024/home.aspx
+Website: https://vslive.com/events/las-vegas-2024/home.aspx
 
 ## W20 My Application is Fully Concurrent and Async. What About the Database?
 
